@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text, Button, SafeAreaView } from "react-native";
+import React, { useEffect, useState } from "react";
+import WebOpen from "./src/screen/WebOpen";
 
-export default function App() {
+const App = (props) => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <SafeAreaView style={{ flex: 1 }}>
+      <WebOpen
+        username={props?.username}
+        page={props?.page} // profile & payment
+        environments={props?.environments} // sandbox & production
+        source={"BNPL"}
+        invoiceNumber={props?.invoiceNumber}
+        paymentDate={props?.paymentDate}
+        amount={props?.amount}
+      />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      {/*
+      <WebOpen
+        username={"7017370753"}
+        page={"profile"} // profile & payment
+        environments={"sandbox"} // sandbox & production
+        source={"BNPL"}
+        invoiceNumber={"123431"}
+        paymentDate={1671129000000}
+        amount={11223}
+      />
+    */}
+    </SafeAreaView>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({});
