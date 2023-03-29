@@ -2,22 +2,22 @@ import { StyleSheet, View, Text, Button, SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import WebOpen from "./src/screen/WebOpen";
 
-const App = () => {
+const RnKredmint = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <WebOpen
-        username={"7017370753"}
-        page={"profile"} // profile & payment
-        environments={"sandbox"} // sandbox & production
+        username={props?.username}
+        page={props?.page} // profile & payment
+        environments={props?.environments} // sandbox & production
         source={"BNPL"}
-        invoiceNumber={"123431"}
-        paymentDate={1671129000000}
-        amount={11223}
+        invoiceNumber={props?.invoiceNumber}
+        paymentDate={props?.paymentDate}
+        amount={props?.amount}
       />
     </SafeAreaView>
   );
 };
 
-export default App;
+export default RnKredmint;
 
 const styles = StyleSheet.create({});
