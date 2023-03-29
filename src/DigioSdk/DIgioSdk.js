@@ -332,7 +332,6 @@ class DigioRNComponent extends Component {
 
   render() {
     if (this.state.showWebView) {
-      debugger;
       return (
         <View
           style={{
@@ -425,6 +424,7 @@ class DigioRNComponent extends Component {
     if (!this.loading) {
       this.loading = `document.body.appendChild(${this.getLoadingHtml()})`;
       this.webview.injectJavaScript(this.loading);
+      true;
     }
   }
 

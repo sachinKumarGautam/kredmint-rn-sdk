@@ -332,7 +332,6 @@ class DigioRNComponent extends Component {
 
   render() {
     if (this.state.showWebView) {
-      debugger;
       return (
         <View
           style={{

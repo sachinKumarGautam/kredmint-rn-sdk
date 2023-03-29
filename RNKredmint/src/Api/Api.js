@@ -123,7 +123,7 @@ export const getPaymentUrl = async (
 };
 
 export const enachApi = async (data) => {
-  const url = "production";
+  var url = "production";
   if (data.environments == "") {
     url = `https://user.kredmint.in/user/mandate?userId=${data.userId}`;
   } else {
