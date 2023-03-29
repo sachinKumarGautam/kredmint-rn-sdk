@@ -5,7 +5,7 @@ import { DigioRNComponent } from "./DIgioSdk";
 export default class Enach extends React.Component {
   constructor(props) {
     super(props);
-    console.log("customUrlcustomUrl", props?.customUrl?.split("/")[5]);
+
     this.state = {
       digioDocumentId: props?.customUrl?.split("/")[5],
       digioUserIdentifier: props?.customUrl?.split("/")[7],
@@ -25,15 +25,10 @@ export default class Enach extends React.Component {
     };
   }
 
-  onSuccess = (t) => {
-    console.log("enach success");
-    console.log(t + " Response from Digio SDk ");
-  };
+  onSuccess = (t) => {};
 
   onCancel = () => {
     this.props.navigation.navigate("Home");
-    console.log("enach failure ");
-    console.log("Cancel Response from Digio SDk ");
   };
 
   componentDidMount = () => {};
@@ -42,8 +37,6 @@ export default class Enach extends React.Component {
   //   this.props?.enachData(this.state.eNachData);
   // }
   render() {
-    console.log("props", this.props, this.props?.customUrl?.split("/")[5]);
-
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <DigioRNComponent
