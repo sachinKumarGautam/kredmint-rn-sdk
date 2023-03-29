@@ -430,7 +430,7 @@ class DigioRNComponent extends Component {
 
   _onNavigationStateChange(webviewState) {
     const requiredArr = this.getUrlParamsArray(webviewState.url);
-    console.log("requiredArr");
+
     let obj = {};
     if (requiredArr != false) {
       if (webviewState.url.includes("status=")) {
@@ -540,8 +540,6 @@ class DigioRNComponent extends Component {
   }
 
   cancel() {
-    console.log("hetetete", this.props.onCancel);
-
     this.setState({ showWebView: false });
     const resObj = {
       digio_doc_id: this.documentId,

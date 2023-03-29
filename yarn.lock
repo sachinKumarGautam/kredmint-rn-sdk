@@ -5762,11 +5762,6 @@ rimraf@~2.6.2:
   dependencies:
     glob "^7.1.3"
 
-rn-kredmint@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/rn-kredmint/-/rn-kredmint-1.0.1.tgz"
-  integrity sha512-NT6e0O6IJ8vaq5tPC6lcAp94qanp4K7qSERiGLR61kmupZue4pIvafF0dlNoOwDRY1N70RvvbIw1LwAvJ/2TRg==
-
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz"

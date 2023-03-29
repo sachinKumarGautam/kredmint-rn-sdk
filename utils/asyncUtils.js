@@ -27,10 +27,9 @@ class AsyncUtils {
       const jsonValue =
         typeof value === "string" ? value : JSON.stringify(value);
       await AsyncStorage.setItem(storageKey, jsonValue);
-      console.log("khjgcfxdgchvjbknl Saving successful");
+
       return { msg: `Saving successful` };
     } catch (error) {
-      //console.log(error);
       return { error: true, msg: `Saving failed` };
     }
   };
@@ -57,14 +56,12 @@ class AsyncUtils {
       await AsyncStorage.removeItem(storageKey);
       return { msg: `Removing successful` };
     } catch (error) {
-      //console.log(error);
       return { error: true, msg: `Removing failed` };
     }
   };
   static _clearAsyncData = async () => {
     try {
       await AsyncStorage.clear();
-      console("Storage successfully cleared!");
     } catch (e) {
       console("Failed to clear the async storage.", e);
     }

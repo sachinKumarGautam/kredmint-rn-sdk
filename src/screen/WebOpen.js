@@ -59,9 +59,9 @@ const WebOpen = (props) => {
       setUrl(res.data.payload.landingUrl);
 
       const queryString = res.data.payload.landingUrl;
-      console.log("queryString", queryString);
+
       const requiredArr = getUrlParamsArray_(queryString);
-      console.log("requiredArr", requiredArr);
+
       let obj = {};
       if (requiredArr != false) {
         if (queryString.includes("authscreen")) {
@@ -81,8 +81,6 @@ const WebOpen = (props) => {
             partnerId: partnerId,
           };
         }
-
-        console.log("objobjobjobjobjobjobjobjobjobj", obj);
 
         await AsyncUtils._storeAsyncData(
           AsyncUtils.AsyncKeysData.bnplToken,
@@ -106,10 +104,7 @@ const WebOpen = (props) => {
           obj.partnerId
         );
       }
-
-      console.log("PROFILE URL======", res.data.payload.landingUrl);
     } catch (err) {
-      console.log("ERROR PROFILE==>", err.response?.data?.errorMessage);
       setErrorMsg(err.response?.data?.errorMessage || "Something Went Wrong");
     }
   };
@@ -127,18 +122,13 @@ const WebOpen = (props) => {
       setUrl("");
       const res = await getPaymentUrl(...sendData);
       setUrl(res.data.payload.landingUrl);
-      console.log("PAYMENT URL======", res.data.payload.landingUrl);
     } catch (err) {
-      console.log("ERROR STATUS==>", err.response.status);
-      console.log("ERROR PAYMENT==>", err.response?.data?.errorMessage);
       setErrorMsg(err.response?.data?.errorMessage || "Something Went Wrong");
     }
   };
 
   const onMessage = (event) => {
-    console.log("event", event);
     let data = event.nativeEvent.data;
-    console.log("webview data", data);
   };
 
   const onNavigationStateChange = async (data) => {
@@ -146,11 +136,8 @@ const WebOpen = (props) => {
     const bnplToken = await AsyncUtils._retriveAsyncData(
       AsyncUtils.AsyncKeysData.bnplToken
     );
-    console.log("allKeys", allKeys, bnplToken);
 
-    console.log("data", data, data.title);
-
-    console.log("enach URL sumit", data.url);
+    console.log("data", data.url, data.title);
 
     if (data.title == "ENachScreen") {
       const requiredArr = getUrlParamsArray(data.url);
@@ -169,7 +156,6 @@ const WebOpen = (props) => {
       };
       const regx = /%3A|%2F|%23/g;
       const ans = str.replace(regx, (matched) => obj[matched]);
-      console.log("jdknsbhcvskdjk ans", ans);
 
       setDigioUrl(ans);
       setShowEnach(true);
@@ -209,13 +195,12 @@ const WebOpen = (props) => {
   const updateStatus = (data) => {
     if (data.status == "success") {
       //setShowEnach(false);
-      console.log("hkugjyfhtdgrfsghjkl", data);
+
       updateData(data);
     }
   };
 
   const updateData = async (data) => {
-    console.log("updateData", data);
     const bnplUserId = await AsyncUtils._retriveAsyncData(
       AsyncUtils.AsyncKeysData.userId
     );
@@ -234,25 +219,22 @@ const WebOpen = (props) => {
       userId: bnplUserId,
       environments: props?.environments,
     };
-    console.log("updateData options", options);
+
     try {
       setLoading(true);
 
       const res = await enachApi(options);
 
-      console.log("res", res);
       setShowEnach(false);
       setLoading(false);
       // redirectScreen();
     } catch (error) {
       setLoading(false);
-      console.log("updateData error", error);
     }
   };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {console.log("showEnach", showEnach)}
       {url ? (
         <View style={{ flex: 1 }}>
           {!showEnach ? (

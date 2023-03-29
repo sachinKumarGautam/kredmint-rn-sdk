@@ -41,7 +41,6 @@ const handleError = async (response) => {
     }
   } else {
     const data = await response.json();
-    console.log("response.status", response.status);
 
     if (response.status == 401) {
       throw "invalid_token";
@@ -131,11 +130,11 @@ export const enachApi = async (data) => {
     url = `https://user-dev.kredmint.in/user/mandate?userId=${data.userId}`;
   }
   const randvalue = new Date().valueOf() + data.userId;
-  console.log("url", url);
+
   const bnplToken = await AsyncUtils._retriveAsyncData(
     AsyncUtils.AsyncKeysData.bnplToken
   );
-  console.log("bnplToken", bnplToken, randvalue);
+
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${bnplToken}`);
   myHeaders.append("Content-Type", "application/json");
@@ -154,7 +153,6 @@ export const enachApi = async (data) => {
       txnId: "",
     },
   });
-  //console.log("raw2", raw);
 
   var requestOptions = {
     method: "PATCH",
